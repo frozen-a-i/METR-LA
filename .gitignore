@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# IDE
+.idea/
+.vscode/
+
+# Large data files (download separately)
+data/_cache/
+
+# Model checkpoints (large binaries)
+results/*.pt
+
+# OMC
+.omc/
