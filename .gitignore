@@ -13,11 +13,5 @@ env/
 .idea/
 .vscode/
 
-# Large data files (download separately)
-data/_cache/
-
-# Model checkpoints (large binaries)
-results/*.pt
-
 # OMC
 .omc/
