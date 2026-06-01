@@ -13,13 +13,14 @@ def build_tensors(snaps):
     X = np.stack(X_list, axis=0)   # [T, N, T_in]
     y = np.stack(y_list, axis=0)   # [T, N, T_out]
 
-    x_min, x_max = X.min(), X.max()
-    X_n = (X - x_min) / (x_max - x_min + 1e-8)
-    y_n = (y - x_min) / (x_max - x_min + 1e-8)
-
-    n       = len(X_n)
+    n       = len(X)
     n_train = int(n * 0.70)
     n_val   = int(n * 0.10)
+
+    # Normalization stats computed on TRAINING SET ONLY — prevents test-set leakage
+    x_min, x_max = X[:n_train].min(), X[:n_train].max()
+    X_n = (X - x_min) / (x_max - x_min + 1e-8)
+    y_n = (y - x_min) / (x_max - x_min + 1e-8)
 
     splits = {
         'train': (X_n[:n_train],              y_n[:n_train]),
